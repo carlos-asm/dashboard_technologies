@@ -26,4 +26,18 @@ class NameTest extends TestCase
         $this->expectExceptionMessage("Name contains invalid characters.");
         new Name('John@Doe');
     }
+
+    public function testNameWithNumbers()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Name contains invalid characters.");
+        new Name('John123');
+    }
+
+    public function testNameWithSpecialCharacters()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Name contains invalid characters.");
+        new Name('John-Doe');
+    }
 }
