@@ -21,8 +21,11 @@ class DoctrineUserRepositoryTest extends TestCase
     {
         $config = Setup::createAnnotationMetadataConfiguration([__DIR__ . '/src'], true, null, null, false);
         $conn = [
-            'driver' => 'pdo_sqlite',
-            'memory' => true,
+            'driver' => 'pdo_mysql',
+            'host' => 'mysql',
+            'dbname' => 'project',
+            'user' => 'root',
+            'password' => 'root',
         ];
         $this->em = EntityManager::create($conn, $config);
         $this->repository = new DoctrineUserRepository($this->em);
@@ -30,7 +33,7 @@ class DoctrineUserRepositoryTest extends TestCase
 
     public function testSaveAndFindUser()
     {
-        $userId = new UserId('123');
+        $userId = new UserId((string) rand(00001, 99999));
         $name = new Name('John Doe');
         $email = new Email('john@example.com');
         $password = new Password('Password123!');
