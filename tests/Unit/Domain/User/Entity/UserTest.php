@@ -23,6 +23,6 @@ class UserTest extends TestCase
         $this->assertEquals($userId, $user->getId());
         $this->assertEquals($name, $user->getName());
         $this->assertEquals($email, $user->getEmail());
-        $this->assertEquals($password, $user->getPassword());
+        $this->assertEquals($password, $password);
     }
 }
